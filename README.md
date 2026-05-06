@@ -60,7 +60,7 @@ All of this is aimed at one thing:
 </p>
 
 <p align="center">
-  <img src="assets/skills.gif" width="600"/>
+  <img src="assets/skills.gif" width="360" height="400"/>
 </p>
 
 ---
