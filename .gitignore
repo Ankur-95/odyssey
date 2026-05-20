@@ -1,0 +1,8 @@
+# Ignore any compiled Windows executable files anywhere in the project
+*.exe
+
+# Ignore the build folders created by the compiler
+build/
+
+# Ignore local VS Code settings
+.vscode/
