@@ -42,21 +42,16 @@ At the moment of creating this repo, the only clear idea I had was:
   </li>
 </ul>
 
-<p>
-All of this is aimed at one thing:
-</p>
 
-<p align="center">
-  <b>Becoming a skilled and confident robotics engineer</b><br>
-  <i>(Hopefully 😄)</i>
-</p>
 
 ---
 
 ## 🎯 The Goal
 
+
+
 <p align="center">
-  <i>"All of this, just so you can say"</i>
+  <b>Becoming a skilled and confident robotics engineer</b><br>
 </p>
 
 <p align="center">
@@ -76,4 +71,3 @@ All of this is aimed at one thing:
 
 ---
 
-<h3 align="center">⚡ Let’s build something awesome.</h3>
