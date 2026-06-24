@@ -62,3 +62,42 @@ Question :-
 #
 
 ### Task 3 :
+**Const and Constexpr :**
+* const: Yeah normal constant i.e The values will be fixed, once given. It can be passed using user input. In this case, there is a possibility that the compiler would not know the value while running the program.   
+
+* constexpr: It is similar to a normal constant. The only difference is that the compiler should know the value which is being stored in this constant. That means the program should know the value before running/executing the complete program.   
+
+But whats the need ??
+Some of the main needs or requirements for building the constexpr are as follows:
+1. It increases the speed of execution, as calculation is done already it saves compute time as well as compute power.
+2. It allows the user to use special features which require values beforehand.
+3. It can determine the error at the compilation stage, thus preventing user window error.  
+4. It makes your code faster, safer, and memory-efficient.
+#
+
+### Task 4 :
+**Operator :** 
+Just like in maths, in coding also we have operators such as:
+1. +(Add): Offco used for giving you the sum of two numbers.
+2. -(Subtract): Used to give th subtraction between two numbers.
+3. *(Multiply): Used for giving the product of two numbers  
+4. /(Divide): Used for giving the quotient of two numbers (in C++, it  chops off the decimal part if using whole numbers).  
+5.% (Modulus): Used for giving only the remainder left over after dividing two numbers.  
+6.<< (Left Shift): Used to shift binary bits to the left, which multiplies a number by 2 for every shift position.
+7.>>(Right Shift): Used to shift binary bits to the right, which divides a number by 2 for every shift position
+8.& (Bitwise AND): Used to compare two numbers in binary, giving a 1 only if both matching bits are 1.
+9.| (Bitwise OR): Used to compare two numbers in binary, giving a 1 if at least one of the matching bits is 1.
+10.^ (Bitwise XOR): Used to compare two numbers in binary, giving a 1 only if the matching bits are different from each other.
+
+#
+### Task 5 :
+**auto :**
+* What is mean by auto ?
+-auto is keyword meaning 'automatic type deduction'. It is feature which lets the c++ compiler figure out the data type automatically.
+- use cases:
+-When types are long and complex.
+-For clean and readable code.
+-auto keeps the loop declaration clean so you can instantly see what the loop body is doing.  
+
+- When it hurts ?
+If the values comes from a function and the name doesnt make the auto forrce  the reader to guess
