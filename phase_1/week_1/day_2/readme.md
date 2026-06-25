@@ -1,103 +1,295 @@
-# Day 2 — Variables, types, I/O
+# Day 2 — Variables, Types, and Operators
 
 ## Today's Tasks
-* Declare variables of every built-in type, print them
+
+* Declare variables of every built-in type and print them
 * Understand signed vs unsigned overflow with a small experiment
-* Use const and constexpr — know the difference
-* Practice all operators: +,-,*,/,%,<<,>>,&,|,^
-* Use auto for type deduction — know when it helps/hurts
-* Task: sensor unit converter (raw int → voltage as double → display string)
+* Use `const` and `constexpr` — know the difference
+* Practice operators: `+`, `-`, `*`, `/`, `%`, `<<`, `>>`, `&`, `|`, `^`
+* Use `auto` for type deduction — know when it helps and when it hurts
+* Build a simple sensor unit converter (`raw int → voltage as double → display string`)
 
+---
 
-##
+## Task 1: Built-in Data Types
 
-### Task 1 :
-In C++ there are several types of Data types. While defining any particular variable it is required that we also have to define its type, meaning the type of data which it is going to store. Data Types are as follows :
-1. **int** :- Integer :- Used for storing the Whole numbers(values) in the container.Generally it stores using 2-bits.
-        Ex: 1,2,4  
+In C++, every variable must be assigned a data type. A data type tells the compiler what kind of value the variable will store and how much memory should be allocated for it.
 
-2. **float** :- Used to store the decimal values. Generally it stores using 4-bits. Capable of storing digits upto 7 decimal points. 
-        Ex: 1.2f, 4.9f  
+### 1. int
 
-3.**boolean** :- Used for storing the logical values i.e True or False.  
+Used for storing whole numbers (integers).
 
-4.**Character** :- It is the data type which is used to store any character may be a letter, special symbol  or even a number.
-        Ex: a,A,%,6  
+**Typical Size:** 4 bytes (32 bits)
 
-5.String :-This is data type which you can say is the superset of character. In string you can store multiple character, numbers and symbols simultaneously.
-        Ex: Yoo, you are reading a string.
-6.Double :- Double is also a number storing data type similar to float, but it is more precise and can hold/carry number upto higher decimal point. Capable of storing digits upto 15-17 decimal points
-        Ex: 15.115151515151
-##
+**Examples:**
 
-### Task 2 :
-**Signed vs Unsigned Values**
-1. Signed values :  
-        -  Are the containers in which we can store both negative as well as positive numbers. The first bit in this containers represent and tells computer whether the given number is positive(0) or negative(1).  
-        - Due to this reason of allocating one bit for sign, the range gets divided into half in comparison of same bit unsigned container.  
-        - 8 bit signed container will hold values in following way: -127 to 127
+```cpp
+int age = 20;
+int sensorCount = 150;
+```
 
-2. Unsigned values :
-        - Are the containers in which we can only store positive numbers.
-        - 8 bit unsigned container will hold values in following way: 0 to 255
-Program Explaining this concepts is [here](phase_1\week_1\day_2\code1.cpp)
+### 2. float
 
-**Some Concepts Related to signed and unsigned containers :**  
-* Overflowing : It happens when the incoming values are larger than the capacity/range of the allocated container. This results in the setting the container back to its lowest/minimum value.  
-Ex: Consider a 8-bit container storing max value i.e 255 now when you will add 1 more in this container, it will set the container bacak to 0.   
-This is called as overflowing. 
+Used for storing decimal numbers with single precision.
 
-* Underflowing : It happens when the incoming values are smaller than the capacity/range of the allocated container. This results in the setting the container back to its highest/maximum value.  
-Ex: Consider a 8-bit container storing min value i.e 0 now when you will subtract 1 from this container, it will set the container bacak to 255.  
+**Typical Size:** 4 bytes (32 bits)
 
-Program Explaining this concepts is [here](phase_1\week_1\day_2\readme.md).
+**Precision:** Approximately 6–7 decimal digits
 
-Question :-
-  
-  Which one is safer for sensor values w.r.t robotics application ?  
+**Examples:**
 
-  -Signed container are more safer and is more used considering that the sensors values can be both negative as well as positive.  
-  -As we know parametrical values in real life rarely stays constant and positive, considering such conditions it is very much feasible to use signed container as compared to unsigned, even if that means lowering our storing capablities.
+```cpp
+float temperature = 36.5f;
+float speed = 12.75f;
+```
 
-#
+### 3. bool
 
-### Task 3 :
-**Const and Constexpr :**
-* const: Yeah normal constant i.e The values will be fixed, once given. It can be passed using user input. In this case, there is a possibility that the compiler would not know the value while running the program.   
+Used for storing logical values.
 
-* constexpr: It is similar to a normal constant. The only difference is that the compiler should know the value which is being stored in this constant. That means the program should know the value before running/executing the complete program.   
+Possible values:
 
-But whats the need ??
-Some of the main needs or requirements for building the constexpr are as follows:
-1. It increases the speed of execution, as calculation is done already it saves compute time as well as compute power.
-2. It allows the user to use special features which require values beforehand.
-3. It can determine the error at the compilation stage, thus preventing user window error.  
-4. It makes your code faster, safer, and memory-efficient.
-#
+* true
+* false
 
-### Task 4 :
-**Operator :** 
-Just like in maths, in coding also we have operators such as:
-1. +(Add): Offco used for giving you the sum of two numbers.
-2. -(Subtract): Used to give th subtraction between two numbers.
-3. *(Multiply): Used for giving the product of two numbers  
-4. /(Divide): Used for giving the quotient of two numbers (in C++, it  chops off the decimal part if using whole numbers).  
-5.% (Modulus): Used for giving only the remainder left over after dividing two numbers.  
-6.<< (Left Shift): Used to shift binary bits to the left, which multiplies a number by 2 for every shift position.
-7.>>(Right Shift): Used to shift binary bits to the right, which divides a number by 2 for every shift position
-8.& (Bitwise AND): Used to compare two numbers in binary, giving a 1 only if both matching bits are 1.
-9.| (Bitwise OR): Used to compare two numbers in binary, giving a 1 if at least one of the matching bits is 1.
-10.^ (Bitwise XOR): Used to compare two numbers in binary, giving a 1 only if the matching bits are different from each other.
+**Example:**
 
-#
-### Task 5 :
-**auto :**
-* What is mean by auto ?
--auto is keyword meaning 'automatic type deduction'. It is feature which lets the c++ compiler figure out the data type automatically.
-- use cases:
--When types are long and complex.
--For clean and readable code.
--auto keeps the loop declaration clean so you can instantly see what the loop body is doing.  
+```cpp
+bool obstacleDetected = true;
+```
 
-- When it hurts ?
-If the values comes from a function and the name doesnt make the auto forrce  the reader to guess
+### 4. char
+
+Used for storing a single character.
+
+**Example:**
+
+```cpp
+char grade = 'A';
+char symbol = '%';
+```
+
+### 5. std::string
+
+Used for storing a sequence of characters (text).
+
+**Example:**
+
+```cpp
+std::string name = "Ankur";
+```
+
+### 6. double
+
+Used for storing decimal numbers with higher precision than float.
+
+**Typical Size:** 8 bytes (64 bits)
+
+**Precision:** Approximately 15–17 decimal digits
+
+**Example:**
+
+```cpp
+double voltage = 12.567891234567;
+```
+
+---
+
+## Task 2: Signed vs Unsigned Values
+
+### Signed Integers
+
+Signed integers can store both positive and negative values.
+
+The highest bit is generally used to represent the sign of the number.
+
+Example (8-bit signed integer):
+
+```text
+Range: -128 to 127
+```
+
+### Unsigned Integers
+
+Unsigned integers can store only non-negative values.
+
+Since no bit is reserved for a sign, the entire range can be used for positive values.
+
+Example (8-bit unsigned integer):
+
+```text
+Range: 0 to 255
+```
+
+Program demonstrating this concept: [code1.cpp](https://github.com/Ankur-95/odyssey/main/phase_1/week_1/day_2/code1.cpp)
+
+---
+
+### Overflow
+
+Overflow occurs when a value exceeds the maximum capacity of a data type.
+
+Example:
+
+```text
+255 + 1 = 0
+```
+
+for an 8-bit unsigned integer.
+
+The value wraps around and starts again from the minimum value.
+
+### Underflow
+
+Underflow occurs when a value goes below the minimum capacity of a data type.
+
+Example:
+
+```text
+0 - 1 = 255
+```
+
+for an 8-bit unsigned integer.
+
+The value wraps around to the maximum value.
+
+Program demonstrating overflow and underflow:  [code2.cpp](https://github.com/Ankur-95/odyssey/main/phase_1/week_1/day_2/code2.cpp)
+
+### Which is Better for Sensor Values?
+
+There is no universal answer.
+
+The correct choice depends on the physical quantity being measured.
+
+Examples:
+
+* Distance → usually unsigned
+* Battery percentage → unsigned
+* Velocity → can be signed
+* Acceleration → can be signed
+* Gyroscope readings → can be signed
+
+The best practice is to choose the type that accurately represents the range of the real-world data.
+
+---
+
+## Task 3: const and constexpr
+
+### const
+
+A `const` variable cannot be modified after initialization.
+
+```cpp
+const int maxSpeed = 100;
+```
+
+The value may be known only when the program starts running.
+
+Example:
+
+```cpp
+int input;
+std::cin >> input;
+
+const int value = input;
+```
+
+### constexpr
+
+A `constexpr` variable must have a value that is known during compilation.
+
+```cpp
+constexpr int wheelCount = 4;
+```
+
+The compiler evaluates it before the program runs.
+
+### Why Use constexpr?
+
+1. Enables compile-time calculations
+2. Can improve performance
+3. Allows use in contexts that require compile-time constants
+4. Helps catch errors earlier during compilation
+
+---
+
+## Task 4: Operators
+
+### Arithmetic Operators
+
+| Operator | Meaning             |
+| -------- | ------------------- |
+| +        | Addition            |
+| -        | Subtraction         |
+| *        | Multiplication      |
+| /        | Division            |
+| %        | Modulus (remainder) |
+
+---
+
+### Bitwise Operators
+
+| Operator | Meaning     |
+| -------- | ----------- |
+| <<       | Left Shift  |
+| >>       | Right Shift |
+| &        | Bitwise AND |
+| |        | Bitwise OR  |
+| ^        | Bitwise XOR |
+
+#### Left Shift (<<) 
+Shifts bits to the left.  
+Each shift roughly multiplies the value by 2.
+
+#### Right Shift (>>)
+
+Shifts bits to the right.  
+Each shift roughly divides the value by 2.
+
+#### Bitwise AND (&)
+
+Returns 1 only when both bits are 1.
+
+#### Bitwise OR (|)
+
+Returns 1 when at least one bit is 1.
+
+#### Bitwise XOR (^)
+
+Returns 1 when the bits are different.
+
+---
+
+## Task 5: auto
+
+### What is auto?
+
+`auto` is a C++ keyword that allows the compiler to automatically deduce the type of a variable.
+
+Example:
+
+```cpp
+auto number = 10;
+```
+
+The compiler automatically determines that `number` is an `int`.
+
+### When Does It Help?
+
+* When types are long and complex
+* Improves readability in loops
+* Reduces repetitive typing
+
+### When Can It Hurt?
+
+Overusing `auto` can make code harder to understand.
+
+Example:
+
+```cpp
+auto result = someFunction();
+```
+
+Without knowing the return type of `someFunction()`, the reader may have difficulty understanding the code immediately.
+
+Use `auto` when it improves readability, not when it hides important information.
