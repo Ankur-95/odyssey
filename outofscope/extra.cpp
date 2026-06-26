@@ -255,3 +255,22 @@
 //     }
 //     std::cout << c;
 // }
+
+// // Patterns
+// #include <iostream>
+// int main()
+// {
+//     int i, j, k;
+//     for (i = 1; i <= 5; i++)
+//     {
+//         for (j = 4; j >= i; j--)
+//         {
+//             std::cout << " ";
+//         }
+//         for (k = 1; k <= i; k++)
+//         {
+//             std::cout << "*";
+//         }
+//         std::cout << "\n";
+//     }
+// }
