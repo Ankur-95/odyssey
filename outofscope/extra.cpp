@@ -226,3 +226,32 @@
 //     }
 //     std::cout << sum;
 // }
+
+// //  Program to find the sum of the digits of a number using for and while loop
+
+// #include <iostream>
+// int main()
+// {
+//     int i, sum = 0, a;
+//     std::cout << "Enter the number:";
+//     std::cin >> i;
+//     for (int j = i; j > 0; j /= 10)
+//     {
+//         a = j % 10;
+//         sum += a;
+//     }
+//     std::cout << " The sum of the digits of the entered number is: " << sum << " \n";
+
+//     int n, b, c = 0;
+//     std::cout << "Enter the number: ";
+//     std::cin >> n;
+//     int m = n;
+//     while (m > 0)
+//     {
+//         b = m % 10;
+
+//         c += b;
+//         m /= 10;
+//     }
+//     std::cout << c;
+// }
