@@ -274,3 +274,77 @@
 //         std::cout << "\n";
 //     }
 // }
+
+// #include <iostream>
+// int main()
+// {
+//     int a, b;
+//     std::cout << "Enter the number of rows: ";
+//     std::cin >> a;
+//     std::cout << "Enter the number of column: ";
+//     std::cin >> b;
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <= b; j++)
+//         {
+//             if (i == 1 or i == a || j == 1 || j == b)
+//             {
+//                 std::cout << "*";
+//             }
+//             else
+//             {
+//                 // Print space for the hollow interior
+//                 std::cout << " ";
+//             }
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+
+// printing the number in the pattern using for loop
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the no. : ";
+//     std::cin >> a;
+
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <= a; j++)
+//         {
+//             std::cout << j << " ";
+//         }
+//         std::cout << " \n";
+//     }
+// } o/p:enter the no. : 5
+// 1 2 3 4 5
+// 1 2 3 4 5
+// 1 2 3 4 5
+// 1 2 3 4 5
+// 1 2 3 4 5
+
+// // printing the number in the pattern using while loop  (top bottom)
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the no. : ";
+//     std::cin >> a;
+
+//     for (int i = 1; i <= a; i++)
+//     {
+//         int j = 1;
+//         while (j <= a)
+//         {
+//             std::cout << i << " ";
+//             j++;
+//         }
+//         std::cout << " \n";
+//     }
+// } o/p:enter the no. : 5
+// 1 1 1 1 1
+// 2 2 2 2 2
+// 3 3 3 3 3
+// 4 4 4 4 4
+// 5 5 5 5 5
