@@ -348,3 +348,174 @@
 // 3 3 3 3 3
 // 4 4 4 4 4
 // 5 5 5 5 5
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the nos.: ";
+//     std::cin >> a;
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <=i; j++)
+//         {
+//             std::cout << "* ";
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+
+// o/p:enter the nos.: 5
+// *
+// * *
+// * * *
+// * * * *
+// * * * * *
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the nos.: ";
+//     std::cin >> a;
+//     for (int i = a; i >= 1; i--)
+//     {
+//         for (int j = 1; j <= i; j++)
+//         {
+//             std::cout << "* ";
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+// enter the nos.: 5
+// * * * * *
+// * * * *
+// * * *
+// * *
+// *
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the nos.: ";
+//     std::cin >> a;
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <= i; j++)
+//         {
+//             std::cout << j;
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+// enter the nos.: 5
+// 1
+// 12
+// 123
+// 1234
+// 12345
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the nos.: ";
+//     std::cin >> a;
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <= a - i + 1; j++)
+//         {
+//             std::cout << i;
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+// enter the nos.: 5
+// 11111
+// 2222
+// 333
+// 44
+// 5
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the nos.: ";
+//     std::cin >> a;
+//     for (int i = a; i >= 1; i--)
+//     {
+//         for (int j = a; j >= i; j--)
+//         {
+//             std::cout << j;
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+// enter the nos.: 4
+// 4
+// 43
+// 432
+// 4321
+
+// OR YOU CAN ALSO DO IT LIKE THIS:
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the nos.: ";
+//     std::cin >> a;
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <= i; j++)
+//         {
+//             std::cout << a - j + 1;
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+// enter the nos.: 4
+// 4
+// 43
+// 432
+// 4321
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "enter the nos.: ";
+//     std::cin >> a;
+//     for (int i = a; i >= 1; i--)
+//     {
+//         for (int j = 1; j <= i; j++)
+//         {
+//             std::cout << (char)(j + 64);
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+// enter the nos.: 5
+// ABCDE
+// ABCD
+// ABC
+// // AB
+// // A
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "Enter The  Number: ";
+//     std::cin >> a;
+//     for (int i = 1; i <= a; i += 2)
+//     {
+//         for (int j = 1; j <= i; j += 2)
+//         {
+//             std::cout << j;
+//         }
+//         std::cout << std::endl;
+//     }
+// }
