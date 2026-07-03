@@ -519,3 +519,124 @@
 //         std::cout << std::endl;
 //     }
 // }
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "Enter the number:";
+//     std::cin >> a;
+//     int n = 1;
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <= i; j++)
+//         {
+//             std::cout << n << " ";
+//             n++;
+//         }
+//         std::cout << std::endl;
+//     }
+// }
+// Enter the number:4
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10
+
+// #include <iostream>
+// int main()
+// {
+//     int a;
+//     std::cout << "Enter the number:";
+//     std::cin >> a;
+//     for (int i = 1; i <= a; i++)
+//     {
+//         for (int j = 1; j <= i; j++)
+//         {
+//             if ((i + j) % 2 == 0)
+
+//             {
+//                 std::cout << "1";
+//             }
+//             else
+//             {
+//                 std::cout << "0";
+//             }
+//         }
+//         std::cout << "\n";
+//     }
+// }
+// Enter the number:5
+// 1
+// 01
+// 101
+// 0101
+// 10101
+
+// #include <iostream>
+
+// int main()
+// {
+//     int a;
+//     std::cout << "Enter the number:";
+//     std::cin >> a;
+
+//     // CRITICAL FIX: Initialise both variables to 1
+//     int n = 1;
+//     int m = 1;
+
+//     while (n <= a)
+//     {
+//         // Added '&& n <= a' to prevent printing past your target number
+//         for (int i = 1; i <= m && n <= a; i++)
+//         {
+//             std::cout << n << " "; // Added a space for readability
+//             n++;
+//         }
+//         std::cout << std::endl;
+//         m++;
+//     }
+// }
+
+// #include <iostream>
+
+// int main()
+// {
+//     while (true)
+//     {
+//         int a;
+//         std::cout << "Enter the odd number: ";
+//         std::cin >> a;
+
+//         if (a % 2 != 0)
+//         {
+//             int b = (a / 2) + 1;
+
+//             for (int i = 1; i <= a; i++)
+//             {
+//                 for (int j = 1; j <= a; j++)
+//                 {
+//                     if (i == b || j == b)
+//                     {
+//                         std::cout << "* "; // FIX: Added a space after the *
+//                     }
+//                     else
+//                     {
+//                         std::cout << "  "; // FIX: Changed to two spaces
+//                     }
+//                 }
+//                 std::cout << std::endl;
+//             }
+//         }
+//         else
+//         {
+//             std::cout << "Please enter the odd number only \n";
+//         }
+//     }
+// }
+// Enter the odd number: 5
+//     *
+//     *
+// * * * * *
+//     *
+//     *
