@@ -118,25 +118,26 @@
 //      num(a);
 // }
 
-// Ye chiz jo mai abhi likhunga voh dimag ghuma dega ye recursion ki hi concept hai.
-#include <iostream>
-void num(int n)
-{
-     if (n == 0)
-     {
-          return;
-     }
+// // Ye chiz jo mai abhi likhunga voh dimag ghuma dega ye recursion ki hi concept hai.
+// #include <iostream>
+// void num(int n)
+// {
+//      if (n == 0)
+//      {
+//           return;
+//      }
 
-     std::cout << n << std::endl; // work
-     num(n - 1);                  // call
-}
-int main()
-{
-     std::cout << "Enter the Number: ";
-     int a;
-     std::cin >> a;
-     num(a);
-}
+//      std::cout << n << std::endl; // work
+//      num(n - 1);                  // call
+// }
+// int main()
+// {
+//      std::cout << "Enter the Number: ";
+//      int a;
+//      std::cin >> a;
+//      num(a);
+// }
+
 /*OUTPUT :
 Enter the Number: 5
 5
@@ -171,3 +172,32 @@ Enter the Number: 5
 3
 4
 5*/
+
+// // Program to get the factorial of a number
+// #include <iostream>
+// int fact(int n)
+// {
+
+//      if (n == 1)
+//      {
+//           return 1;
+//      }
+//      return n * fact(n - 1);
+// }
+// int main()
+// {
+
+//      int a;
+//      std::cout << "Enter the number: ";
+//      std::cin >> a;
+//      std::cout << "The factorial of " << a << " is: " << fact(a) << std::endl;
+// }
+
+/*
+OUTPUT:
+Enter the number: 6
+The factorial of 6 is: 720
+*/
+
+
+
