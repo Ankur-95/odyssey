@@ -19,7 +19,43 @@ Task: a small math utility .h + .cpp with 6 helper functions — compile separat
 
 # Understanding todays topics
 
+### Funtions
 Function : function is the block of code which is designed specifically so that user can used that block of code multiple times.
 Instead of writing those code again and again we will wwrite it and wrap it as a fuction and then this function can be call multiple times.
 what is call you asks ?
 well call is (as the name suggests) a method which helps us to call our functions. It is just done by writing (or in this case calling) the name of function.
+
+
+Declaration vs Definition 
+Declaration is the process of declaring or proposing/introducing the function into the program with/without stating what it does, whereas
+Definition is the process of defining or stating the complete function and gives the information such as: what the function does ? what are the parameters passed ? etc
+
+ooh wait I didnt introduce you our friend here 'Parameter' ? right ?
+
+### Parameter 
+Parameter are the value holder assigned or alloted to a particular function which acts as placeholder that receive data whenever that function is called.
+Every function parameter falls into of the following types :
+1. Pass by value:
+- Pass by value creates a local copy of the argument's data inside the function.
+- The function allocates new memory for the parameter and copies the value into it.
+- Modifying the parameter inside the function has zero effect on the original argument outside the function.
+
+2. Pass by Reference:
+- Pass by reference is a method of using a variable by calling it using its memory address instead of variable_name.
+-The parameter directly points to the original variable's memory slot.
+- Any changes made to the parameter inside the function immediately alter the original variable.
+
+3. Const Reference:
+A const reference is the one step advanced as comp to pass-by-reference, it doesnt allow modification of the passed value.
+-The parameter directly points to the original variable's memory slot.
+- The `const` keyword strictly forbids the function from modifying the data.
+
+
+### Return 
+Every function can be classified into two major types based on its return type:
+Value-Returning Functions:
+These functions compute a result and always return a value to the place where they were called.
+Ex: - int main() returns an integer (usually 0 to signal success).
+    - double calculateArea() returns a decimal number.
+Void Functions:These functions perform an action but do not return any value.
+Ex: - void printMessage() prints text to the screen but returns nothing.
