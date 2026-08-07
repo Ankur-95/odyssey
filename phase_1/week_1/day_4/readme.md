@@ -59,3 +59,57 @@ Ex: - int main() returns an integer (usually 0 to signal success).
     - double calculateArea() returns a decimal number.
 Void Functions:These functions perform an action but do not return any value.
 Ex: - void printMessage() prints text to the screen but returns nothing.
+
+### Function Overloading 
+Function overloading is a feature that allows multiple functions to have the exact same name, as long as they have different parameter lists.
+To show you the valid overloading, look at the following example:
+-Valid
+void print(int x);
+void print(double x); 
+
+-Invalid (Only the return type is different - will cause an error)
+int print(int x);
+void print(int x)
+
+### Header Files and Sources Files
+C++ splits code into two distinct file types to keep large projects organized and fast to compile.
+1. Header File(.h): 
+- Gives us the function prototype 
+- Basically it tells the compiler that 'a function with this name and these parameters exists.'
+2.Source File(.cpp):
+- Contains definition (actual logic inside {} )
+-Gives the code that actually does the work.
+
+### Task - 1: Write 5 small pure functions (clamp, normalize, deg-to-rad, rad-to-deg, sign)
+The "pure function" means the function must only depend on their inputs and must not change any outside variables.
+Here is what each function example does and its explanation: 
+- clamp : return the no. if it is within the limit otherwise return max or min value based on where the values lies.
+- normalize : takes a value within a specific range and converts it into a fraction between 0 to 1. Formula= (value -min)/(max - min)
+- degToRad : Converts an angle from degrees (like 180°) to radians (like \(\pi \)).
+-radToDeg : Converts radians back into degrees.
+- sign : Tells you if a number is positive, negative, or zero.
+Return 1 if the number is greater than zero, -1 if it is less than zero, and 0 if it is exactly zero.
+The link to the file containing all the functions is {here}[]
+
+
+### Task -2:Demonstrate pass-by-value vs pass-by-reference with a swap 
+
+Chatgpt: task for you add some relevant and easy to understand reason and info about why the code didnt work Code:void passbyValue(int a, int b)
+{
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+void passbyref(int &a, int &b)
+{
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+} 
+Link to the folder ()
+
+### Task -3:Use const reference for expensive inputs
+
+
