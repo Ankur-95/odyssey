@@ -90,7 +90,7 @@ Here is what each function example does and its explanation:
 -radToDeg : Converts radians back into degrees.
 - sign : Tells you if a number is positive, negative, or zero.
 Return 1 if the number is greater than zero, -1 if it is less than zero, and 0 if it is exactly zero.
-The link to the file containing all the functions is [Here]()
+The link to the file containing all the functions is [Here](https://github.com/Ankur-95/odyssey/blob/main/phase_1/week_1/day_4/code1.cpp)
 
 ---
 ### Task -2:Demonstrate pass-by-value vs pass-by-reference with a swap 
@@ -119,15 +119,15 @@ original → copy → function modifies copy → original unchanged
 Pass by reference
 original → reference → function modifies original → original changes
 
-Link to the folder [Here]()
+Link to the folder [Here](https://github.com/Ankur-95/odyssey/blob/main/phase_1/week_1/day_4/code2.cpp)
 
 ---
 
 ### Task -3: Use const reference for expensive inputs
 
-Link to the folder [Here]()
+Link to the folder [Here](https://github.com/Ankur-95/odyssey/blob/main/phase_1/week_1/day_4/code3.cpp)
 
 
 ### Task 4 : Write overloaded clamp() for int and double
 
-Link to the folder [Here]()
+Link to the folder [Here](https://github.com/Ankur-95/odyssey/blob/main/phase_1/week_1/day_4/code4.cpp)
