@@ -80,6 +80,7 @@ C++ splits code into two distinct file types to keep large projects organized an
 - Contains definition (actual logic inside {} )
 -Gives the code that actually does the work.
 
+---
 ### Task - 1: Write 5 small pure functions (clamp, normalize, deg-to-rad, rad-to-deg, sign)
 The "pure function" means the function must only depend on their inputs and must not change any outside variables.
 Here is what each function example does and its explanation: 
@@ -89,27 +90,44 @@ Here is what each function example does and its explanation:
 -radToDeg : Converts radians back into degrees.
 - sign : Tells you if a number is positive, negative, or zero.
 Return 1 if the number is greater than zero, -1 if it is less than zero, and 0 if it is exactly zero.
-The link to the file containing all the functions is {here}[]
+The link to the file containing all the functions is [Here]()
 
-
+---
 ### Task -2:Demonstrate pass-by-value vs pass-by-reference with a swap 
 
-Chatgpt: task for you add some relevant and easy to understand reason and info about why the code didnt work Code:void passbyValue(int a, int b)
+I used two separate functions to demonstrate the difference between pass-by-value and pass-by-reference.
+
+In the pass-by-value version:
+
+void passbyValue(int a, int b)
 {
     int temp;
     temp = a;
     a = b;
     b = temp;
 }
-void passbyref(int &a, int &b)
-{
-    int temp;
-    temp = a;
-    a = b;
-    b = temp;
-} 
-Link to the folder ()
 
-### Task -3:Use const reference for expensive inputs
+The swapping logic itself works correctly. However, a and b are copies of the variables passed from main(). The function swaps these local copies, and once the function finishes, those copies are destroyed. Therefore, the original variables in main() remain unchanged.
 
 
+
+The important difference is:
+
+Pass by value
+original → copy → function modifies copy → original unchanged
+
+Pass by reference
+original → reference → function modifies original → original changes
+
+Link to the folder [Here]()
+
+---
+
+### Task -3: Use const reference for expensive inputs
+
+Link to the folder [Here]()
+
+
+### Task 4 : Write overloaded clamp() for int and double
+
+Link to the folder [Here]()
