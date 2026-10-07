@@ -29,7 +29,7 @@ The exact definition:
 
 Instead of storing the actual data, a pointer stores the **location in memory** where that data is stored.
 
-Consider this:
+Consider:
 
 ```text
 ptr ─────────► x
@@ -38,10 +38,10 @@ ptr ─────────► x
 
 where:
 
-* `x` = the variable where the actual value is stored
-* `ptr` = the pointer variable
+* `x` = variable where the actual value is stored
+* `ptr` = pointer variable
 * `ptr` stores the memory address of `x`
-* `*ptr` can then be used to access the value stored in `x`
+* `*ptr` can be used to access the value stored in `x`
 
 For example:
 
@@ -50,36 +50,25 @@ int x = 100;
 int* ptr = &x;
 ```
 
-Here:
+### Quick Syntax Reference
 
-```text
-ptr  → address of x
-*ptr → value of x
-```
+| Syntax    | Meaning                         | Example             |
+| --------- | ------------------------------- | ------------------- |
+| `int x`   | Normal integer variable         | `int x = 10;`       |
+| `int* x`  | Pointer to an integer           | `int* x = &a;`      |
+| `int& x`  | Reference (alias) to an integer | `int& x = a;`       |
+| `&x`      | Address of `x`                  | `int* p = &x;`      |
+| `*x`      | Dereference pointer `x`         | `*p = 20;`          |
+| `nullptr` | Pointer points to nothing       | `int* p = nullptr;` |
 
----
+**Don't confuse:**
 
-## What's the use of pointers though?
-
-Pointers are useful when we need to work with the **memory location of an object** instead of just its value.
-
-Some important uses:
-
-### Direct Memory Access
-
-Pointers are heavily used in low-level programming, operating systems, embedded systems and hardware-related programming where specific memory locations may need to be accessed.
-
-### Efficient Data Handling
-
-Pointers can allow functions to work with existing data instead of making unnecessary copies, especially when dealing with large objects.
-
-### Dynamic Memory
-
-Pointers are also involved in dynamically allocated memory and data structures such as linked lists, trees, etc.
+* `int& x` → declaring a reference
+* `&x` → getting the address of `x`
 
 ---
 
-## How to declare a pointer?
+## Pointer Declaration and Initialization
 
 The basic syntax is:
 
@@ -95,90 +84,30 @@ double* p;
 char* ch;
 ```
 
-The type tells us what kind of object the pointer is intended to point to.
-
----
-
-## Initializing a Pointer
-
-A pointer should be initialized with the address of an object it is supposed to point to.
+To initialize a pointer with the address of a variable:
 
 ```cpp
 int x = 10;
-
 int* ptr = &x;
 ```
 
 Here:
 
-* `&x` gives the memory address of `x`
-* `ptr` stores that address
-* `ptr` therefore points to `x`
-
-### Important operators
-
-```cpp
-&x
+```text
+&x   → address of x
+ptr  → stores that address
+*ptr → value stored at that address
 ```
 
-means:
-
-> Give me the address of `x`.
-
-Whereas:
-
-```cpp
-*ptr
-```
-
-means:
-
-> Access the value stored at the address contained in `ptr`.
+The pointer type tells the compiler what type of object the pointer points to. It also matters during dereferencing and pointer arithmetic.
 
 ---
 
-## Why do we need to define the Pointer Type?
+## Dereferencing
 
-You might wonder why we need to write:
+It's easy to store an address in a pointer, but we also need a way to access the value at that address.
 
-```cpp
-int* ptr;
-double* ptr;
-char* ptr;
-```
-
-instead of just having a generic pointer.
-
-The pointer type tells the compiler what type of object the pointer points to.
-
-This becomes important when:
-
-1. Dereferencing the pointer — the compiler needs to know how to interpret the data.
-2. Performing pointer arithmetic — the size of the pointed-to type determines how far the pointer moves.
-
-For example:
-
-```cpp
-int* ptr;
-```
-
-means `ptr` is expected to point to an `int`.
-
-Similarly:
-
-```cpp
-double* ptr;
-```
-
-means it is expected to point to a `double`.
-
----
-
-## Dereferencing a Pointer
-
-It's easy to store an address in a pointer, but we also need a way to access the actual value.
-
-That's where **dereferencing** comes in.
+That's called **dereferencing**:
 
 ```cpp
 int x = 10;
@@ -193,40 +122,27 @@ Output:
 10
 ```
 
-`*ptr` accesses the value stored at the memory address contained in `ptr`.
-
 We can also modify the original variable through the pointer:
 
 ```cpp
-int x = 10;
-int* ptr = &x;
-
 *ptr = 12;
 ```
 
-Now:
+Now `x` is `12`.
 
-```text
-x = 12
-```
-
-The pointer did not create another copy of `x`.
-
-It accessed the original `x` through its memory address.
+The pointer doesn't create another copy of `x`; it accesses the original object through its address.
 
 ---
 
-# nullptr
+### `nullptr`
 
-`nullptr` is a C++11 keyword that represents a **null pointer value**.
-
-It means that the pointer is currently not pointing to an object.
+`nullptr` represents a pointer that is **not currently pointing to an object**.
 
 ```cpp
 int* ptr = nullptr;
 ```
 
-This is different from an uninitialized pointer:
+This is different from:
 
 ```cpp
 int* ptr;
@@ -234,52 +150,28 @@ int* ptr;
 
 An uninitialized pointer contains an indeterminate value and should not be dereferenced.
 
-So why create a pointer and then store "nothing" in it?
-
-Because sometimes a pointer doesn't have a valid object to point to yet.
-
-Initializing it to `nullptr` gives it a **known state** that we can safely check.
-
-For example:
+Initializing it with `nullptr` gives it a known state that can be checked:
 
 ```cpp
 if (ptr != nullptr)
 {
-    // Safe to consider dereferencing ptr
+    // safe to consider dereferencing ptr
 }
 ```
 
-This is much better than leaving a pointer uninitialized and not knowing what it contains.
-
-### Important
-
-`nullptr` does **not** mean a valid memory address.
-
-It represents the state:
-
-> This pointer is not pointing to an object.
-
-Never do:
+Never dereference a null pointer:
 
 ```cpp
 int* ptr = nullptr;
 
-std::cout << *ptr;
+std::cout << *ptr; // Undefined behavior
 ```
-
-Dereferencing a null pointer results in **undefined behavior**.
 
 ---
 
 # Pointer Arithmetic
 
-As the name suggests, pointer arithmetic means performing arithmetic operations on pointer values.
-
-But there is one important thing to understand:
-
-> Pointer arithmetic moves between elements based on the type being pointed to. It does not simply increase the address by one byte.
-
-## Pointer Increment / Decrement
+Pointer arithmetic moves between elements based on the type being pointed to.
 
 Consider:
 
@@ -289,33 +181,19 @@ int arr[] = {10, 20, 30};
 int* ptr = arr;
 ```
 
-Here `ptr` points to the first element:
-
-```text
-ptr → arr[0]
-```
-
-If we do:
+`ptr` points to `arr[0]`.
 
 ```cpp
 ptr++;
 ```
 
-the pointer moves to the next `int`:
+moves it to the next `int`:
 
 ```text
 ptr → arr[1]
 ```
 
-Similarly:
-
-```cpp
-ptr--;
-```
-
-moves it back by one `int`.
-
-For example, if an `int` occupies 4 bytes, conceptually:
+If an `int` occupies 4 bytes, conceptually:
 
 ```text
 arr[0] → 0x1000
@@ -323,105 +201,45 @@ arr[1] → 0x1004
 arr[2] → 0x1008
 ```
 
-So:
-
-```cpp
-ptr++;
-```
-
-moves to the next `int`, meaning the address changes by `sizeof(int)` bytes.
-
-This is why pointer arithmetic depends on the pointer's type.
+So `ptr++` moves by `sizeof(int)` bytes, not simply by one byte.
 
 ---
 
-# Relationship Between Arrays and Pointers
+## Arrays and Pointers
 
-Arrays and pointers are closely related in C++, especially when an array is used in an expression.
-
-Consider:
+In many expressions, an array name converts to a pointer to its first element.
 
 ```cpp
 int arr[3] = {100, 200, 300};
-```
 
-In many expressions, the array name `arr` converts to a pointer to its first element.
-
-So conceptually:
-
-```cpp
-arr
-```
-
-can be used as a pointer to:
-
-```cpp
-&arr[0]
-```
-
-This is why we can write:
-
-```cpp
 int* ptr = arr;
 ```
 
-and `ptr` points to the first element.
-
-### Array indexing and pointer arithmetic
+Here `ptr` points to `arr[0]`.
 
 These are equivalent:
 
 ```cpp
 arr[i]
-```
-
-and:
-
-```cpp
 *(arr + i)
 ```
 
 For example:
 
 ```cpp
-std::cout << arr[0];
-std::cout << *arr;
+arr[2]
+*(arr + 2)
 ```
 
-Both give:
+both access `300`.
 
-```text
-100
-```
-
-And:
-
-```cpp
-std::cout << arr[2];
-std::cout << *(arr + 2);
-```
-
-Both give:
-
-```text
-300
-```
-
-This is one of the most important connections between arrays and pointers.
-
-### Important clarification
-
-An array is **not the same thing as a pointer**.
-
-An array can decay to a pointer to its first element in many contexts, but the array itself and a pointer are different types of objects.
+**Important:** An array is not the same thing as a pointer. They are different types, but arrays can decay to a pointer to their first element in many contexts.
 
 ---
 
 # Dangling Pointers
 
-There is also a concept called a **dangling pointer**.
-
-A dangling pointer is a pointer that still contains an address, but the object that used to exist at that address has already reached the end of its lifetime or has been destroyed/deallocated.
+A dangling pointer is a pointer that still contains an address, but the object that used to exist at that address has already reached the end of its lifetime.
 
 Conceptually:
 
@@ -429,41 +247,33 @@ Conceptually:
 Object exists
      ↑
    pointer
+
+Object destroyed
+     ↑
+   pointer
 ```
 
-Then the object is destroyed:
-
-```text
-Object → gone
-
-pointer ─────► old address
-```
-
-The pointer still exists, but the object it was supposed to point to no longer exists.
+The pointer still contains an address, but the object is no longer valid.
 
 Using such a pointer to access the old object results in **undefined behavior**.
 
-### Important distinction
-
-A dangling pointer is different from `nullptr`.
+### `nullptr` vs dangling pointer
 
 ```text
-nullptr pointer:
-pointer → nothing
+nullptr:
+pointer → no object
 
 dangling pointer:
 pointer → old address, but object is gone
 ```
 
-For this section, only understand and show the concept. **Do not intentionally execute code that dereferences a dangling pointer.**
+For this section, understand the concept but **never intentionally execute code that dereferences a dangling pointer.**
 
 ---
 
 # References
 
 A reference is an **alias / alternate name for an existing variable**.
-
-Example:
 
 ```cpp
 int x = 10;
@@ -473,204 +283,118 @@ int& ref = x;
 
 Now `ref` refers to the same object as `x`.
 
-If we do:
-
 ```cpp
 ref = 20;
 ```
 
-then `x` also becomes:
+Now `x` is also `20`.
 
-```text
-x = 20
-```
+### Reference Rules
 
-We are not modifying some separate copy.
+* Must be initialized when declared.
+* Cannot be rebound to another object.
+* Cannot represent `nullptr`.
+* Acts directly as an alias for the original object.
 
-`ref` is simply another way of accessing `x`.
-
-We can also read through it:
-
-```cpp
-int y = ref;
-```
-
-Now:
-
-```text
-y = 20
-```
-
----
-
-## Key Rules for References
-
-### 1. Must be initialized
-
-A reference must be initialized when it is declared:
+For example:
 
 ```cpp
+int x = 10;
+int y = 20;
+
 int& ref = x;
-```
 
-You cannot simply create an uninitialized normal reference and decide what it will refer to later.
-
-### 2. Cannot be rebound
-
-Once:
-
-```cpp
-int& ref = x;
-```
-
-has been established, `ref` cannot later be made to refer to `y`.
-
-If we write:
-
-```cpp
 ref = y;
 ```
 
-we are **assigning the value of `y` to `x`**.
+This does **not** make `ref` refer to `y`.
 
-We are not changing what `ref` refers to.
-
-### 3. No `nullptr` reference
-
-A normal reference must refer to an existing object. Unlike a pointer, it cannot represent "points to nothing" using `nullptr`.
-
-### 4. Reference to reference
-
-You don't normally declare a direct reference-to-reference such as:
-
-```cpp
-int&&& ref;
-```
-
-C++ has more advanced rules such as **reference collapsing**, but that is beyond what we need for this Day 6 introduction.
+Instead, it copies the value of `y` into `x`.
 
 ---
 
 # Pointers vs References
 
-| Feature                   | Pointer (`T*`)              | Reference (`T&`)                |
-| ------------------------- | --------------------------- | ------------------------------- |
-| Syntax                    | Uses `*`                    | Uses `&`                        |
-| Initialization            | Can be initialized later    | Must be initialized             |
-| Null                      | Can be `nullptr`            | Cannot be null                  |
-| Rebinding                 | Can point to another object | Cannot be rebound               |
-| Access                    | Requires dereferencing      | Acts like the original variable |
-| Can represent "no object" | Yes                         | No                              |
+| Feature           | Pointer (`T*`)                    | Reference (`T&`)                |
+| ----------------- | --------------------------------- | ------------------------------- |
+| Stores an address | Yes                               | Acts as an alias                |
+| Initialization    | Can be initialized with `nullptr` | Must refer to an object         |
+| Null              | Can be `nullptr`                  | Cannot be null                  |
+| Rebinding         | Can point to another object       | Cannot be rebound               |
+| Access            | Requires `*` to dereference       | Used like the original variable |
 
-The important conceptual difference:
+The simplest way I understand the difference:
 
-> A pointer is an object that stores an address.
+```text
+Pointer:
+object → address → pointer
 
-> A reference is an alias for an existing object.
-
----
-
-# Pointers with Functions
-
-Pointers become especially useful when passing data to functions.
-
-A pointer parameter can receive the address of an existing variable.
-
-For example, conceptually:
-
-```cpp
-void modify(int* ptr)
-{
-    // work with the original object through ptr
-}
+Reference:
+object ← alias
 ```
-
-The caller can pass the address:
-
-```cpp
-modify(&x);
-```
-
-Inside the function, dereferencing the pointer allows the function to access or modify the original variable.
-
-References can achieve a similar result:
-
-```cpp
-void modify(int& value)
-{
-    // work directly with the original object
-}
-```
-
-The caller can simply write:
-
-```cpp
-modify(x);
-```
-
-This is one of the practical reasons pointers and references are important in functions.
 
 ---
 
 # Swap Experiment
 
-For today's main practical task, I implemented `swap()` in two different ways:
+For the main practical task, I implemented `swap()` in two ways:
 
 1. Using pointers
 2. Using references
 
-The pointer version receives the **addresses** of the two variables and uses dereferencing to modify their original values.
-
-The reference version receives **aliases** to the original variables and can modify them directly.
-
-The pointer version also performs a `nullptr` check:
+The pointer version receives addresses:
 
 ```cpp
-if (a == nullptr || b == nullptr)
-    return;
+swapby_ptr(&x, &y);
 ```
 
-This is possible because pointers can represent the absence of an object.
+Inside the function, `*a` and `*b` access the original variables.
 
-The reference version doesn't need such a check because a normal reference is expected to refer to a valid object.
+The reference version receives aliases:
 
-### One thing to notice in the experiment
+```cpp
+swapby_ref(x, y);
+```
 
-The program first swaps `x` and `y` using references and then swaps them again using pointers.
+and can modify the original variables directly.
 
-So if the initial values are:
+The pointer version also checks for `nullptr` because pointers can represent "no object".
+
+Both approaches can modify the caller's original variables, but they express the relationship differently:
+
+```text
+Pointer:
+address → object
+
+Reference:
+alias → object
+```
+
+### One thing to notice
+
+In my experiment, I call both swap functions one after another.
+
+Starting:
 
 ```text
 x = 5
 y = 10
 ```
 
-after the first swap:
+After the first swap:
 
 ```text
 x = 10
 y = 5
 ```
 
-and after the second swap:
+After the second swap:
 
 ```text
 x = 5
 y = 10
 ```
 
-So the final values return to the original values because the program performs **two swaps**.
+So the final values return to the original values because the variables were swapped **twice**.
 
-### Main takeaway
-
-Both pointers and references can allow a function to modify the caller's original variables.
-
-The main difference is how they represent that relationship:
-
-```text
-Pointer:
-variable → address → object
-
-Reference:
-reference → alias of object
-```
+---
